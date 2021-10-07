@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test get weather data</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="./DisplayWeatherData.js"></script>
+</head>
+
+<body onLoad="GetWeatherData('http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/3840?res=3hourly&key=00c02539-1bdc-4e8d-9480-c2f1e8f3e721')">
+
+    <div id="weatherData">
+        Weather Data div
+    </div>
+
+
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=TODO" async></script>
+    <script src="https://maps.googleapis.com/maps/api/js?TODOcallback=initMap&libraries=geometry" async></script>
+
+
+
+</body>
+
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+</html>

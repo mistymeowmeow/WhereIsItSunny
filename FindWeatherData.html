@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JavaScript - read JSON from URL</title>
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+</head>
+
+<body onload="getJSON('http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/sitelist?key=00c02539-1bdc-4e8d-9480-c2f1e8f3e721'); initMap()">
+    <div id="json"></div>
+    <div id="map"></div>
+    <script>
+        function getJSON(url) {
+            document.getElementById("json").innerHTML = "test ";
+            var resp;
+            var xmlHttp;
+
+            resp = '';
+            xmlHttp = new XMLHttpRequest();
+
+            if (xmlHttp != null) {
+                xmlHttp.open("GET", url, false);
+                xmlHttp.send(null);
+                resp = xmlHttp.responseText;
+            }
+            //document.getElementById("json").innerHTML += resp;
+            const json_resp = JSON.parse(resp);
+            const locations = json_resp.Locations;
+            //prints the first 10 location names within the data list
+            for (i = 0; i < 10; i++) {
+                document.getElementById("json").innerHTML += json_resp.Locations.Location[i].name + "<br/> ";
+            }
+
+            //starting location   
+        }
+
+        function initMap() {
+            const myLatLng = {
+                lat: 51.481583,
+                lng: -3.179090
+            };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+                center: myLatLng,
+            });
+
+            new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Hello World!",
+            });
+
+            //Creating a circle around your location
+            const defaultCircle = new google.maps.Circle({
+                strokeColor: "#FF0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#FF0000",
+                fillOpacity: 0.35,
+                map,
+                center: myLatLng,
+                radius: 25000,
+            });
+
+        }
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=TODO&callback=initMap&v=weekly" async></script>
+</body>
+
+</html>

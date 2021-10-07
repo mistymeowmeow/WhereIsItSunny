@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+
+    <script src="./Marker.js"></script>
+</head>
+
+<body onload="getJSON('http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/sitelist?key=00c02539-1bdc-4e8d-9480-c2f1e8f3e721')">
+
+    <select id="radiusSize" name="Radius Size" onchange="getJSON('http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/sitelist?key=00c02539-1bdc-4e8d-9480-c2f1e8f3e721')">
+        <option value=10000>10km</option>
+        <option value=25000>25km</option>
+        <option value=50000>50km</option>
+        <option value=100000>100km</option>
+        <option value=250000>250km</option>
+    </select>
+
+
+
+    <div id="map"></div>p
+
+    <div id="json"></div>
+
+    <div id="locations"></div>
+
+    <div id="weatherData"></div>
+
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=TODO&callback=initMap&v=weekly" async></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=TODO&callback=initMap&libraries=geometry" async></script>
+
+
+
+</body>
+
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+</html>
